@@ -1,0 +1,68 @@
+*{
+    padding:0;
+    margin: 0;
+}
+/*层叠样式*/
+#banner{
+    width:520px;
+    height:280px;
+    border: 1px solid #92baff;
+    margin: 50px auto;
+    position: relative;
+    /*相对定位*/
+}
+#picture{
+    width:520px ;
+    height: 280px;
+    background: pink;
+}
+#picture img{
+    position:absolute;
+    /*绝对定位*/
+    top: 0;
+    left: 0;
+    display: none;
+}
+#list{
+    width:80px;
+    height:12px;
+    /*border:1px solid #000 ;*/
+    position: absolute;
+    bottom:16px;
+    left:50%;
+    /*首先距离盒子50%，是从他的父级的盒子的50%为开头，然后
+    进行布局它本身，然后应该让他居中显示，然后应该左移
+    他的一半，就应该为-50*/
+    margin-left: -40px;
+}
+#list ul li{
+    width:12px;
+    height:12px;
+    background: #B7B7B7;
+    float: left;
+    margin: 0 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    /*改变鼠标的形状*/
+}
+ul,li{
+    list-style: none;
+}
+/*选中ul下的li的class中带有on的元素*/
+#list ul li.on{
+    background: #f60;
+}
+#btn button{
+    width:26px;
+    height:36px;
+    position: absolute;
+    top:50%;
+    margin-top: -18px;
+}
+#left{
+    left:20px;
+}
+#right{
+    right:20px;
+}
+/*banner end*/
