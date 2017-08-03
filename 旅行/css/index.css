@@ -1,0 +1,105 @@
+﻿html,body,div,span,iframe,map,font,img,a img,samp,strong,hr,
+h1,h2,h3,h4,h5,h6,b,p,blockquote,a,address,code,dl,dt,dd,ol,
+ul,li,form,label,table,tr,td,th{padding:0;margin:0;border:0;
+font-size:15px;font-family: "微软雅黑", Helvetica, sans-serif;}
+body{background: #fff;}ul,li{list-style:none;}dl{}.f_l{float:left;}.f_r{float:right;}
+
+
+/*adv开始*/
+#banner{width:100%;height:100px;background:rgba(60,60,60,0.2);z-index:3; position: absolute;}
+#banner .adv{width:100%;height:80px;margin:0 auto;}
+#banner .adv .logo a{float:left;margin:20px 30px 0;}/*:after*/
+#banner .adv .list{width:570px;height:50px;float:right;margin-top:30px;}
+#banner .adv .list li{float:left;width:90px;height:34px;position:relative;}
+#banner .adv .list li .box{width:110px;height:34px;position:absolute;top:0px;left:0px;}
+#banner .adv .list li .box a{display:block;width:90px;height:30px;margin:0 auto;text-decoration:none;
+font-size:14px;border-radius:15px;color:#fff;font-weight:bold;text-align:center;
+transition:all 0.6s;border:2px solid rgba(250,250,250,0);overflow:hidden;}
+#banner .adv .list li .box a div{transition:all 0.6s;}
+#banner .adv .list li .box a div span{display:block;font-size:14px;line-height:30px;}
+#banner .adv .list li .box a:hover{width:106px;border:2px solid rgba(250,250,250,1);text-align:center}
+#banner .adv .list li .box a:hover div{margin-top:-30px;}
+#banner .adv .list li .box1 a div{margin-top:-30px;}
+#banner .adv .list li .box1 a{width:106px;border:2px solid rgba(250,250,250,1);}
+/*adv结束*/
+
+
+/*轮播图开始*/
+#big{width:100%;height:650px;}
+#big .con{width:100%;height:650px;margin:0 auto;position:relative;}
+#big .con .pic{width:100%;height:650px;position:relative;}
+#big .con .pic img{width:100%;height:650px;position:absolute;display:none;}
+#big .con .list{width:126px;height:10px;background:rgba(0,0,0,.1);margin:auto;position:absolute;
+	top: 590px; left: 0; bottom: 0; right: 0;border-radius:12px;padding:7px 4px;}
+#big .con .list li{width:8px;height:8px;border:1px solid #fff;list-style:none;
+	float:left;margin:0 4px;border-radius:50%;cursor:pointer;}
+#big .con .list .hov{background:#fff;}
+
+#big .con .but li{list-style:none;width:50px;height:70px;cursor:pointer;
+	color:#fff;font-size:34px;text-align:center;line-height:70px;
+	font-weight:700;position:absolute;top:310px;display:none;}
+#big .con .but li:hover{background:rgba(0,0,0,.2);}
+#big .con .but .left{left:20px;}
+#big .con .but .right{right:20px;}
+#big .con:hover .but li{display:block;}
+/*轮播图结束*/
+
+#www{background-color: 	#EBEBEB; overflow: hidden;height: 100%;padding: 20px 0px 20px;}
+#www .www_1{width: 1100px;margin: 0 auto;}
+.h50{height: 50px;}
+#www .www_1 .www_2{width: 1100px;height: 960px;overflow: hidden;}
+#www ul{margin-left: -27px;overflow: hidden;height: 100%;list-style: none;}
+#www li{float: left;width: 375px;height: 320px;overflow: hidden;display:block;}
+#www li a{color: #999;font-size: 14px;line-height: 16px;text-decoration: none;}
+
+#www li img{overflow: hidden;width: 352px;height: 257px;padding: 11px 11px 6px;}
+#www li p{padding: 0 11px;text-align:center;}
+#www li p:hover{text-decoration: underline;}
+
+
+    /*内容开始*/
+#China{width: 100%;background-color:#F5F5F5; overflow: hidden;}
+#China .content{width: 1200px;margin: 0px auto;padding-top:60px;}
+#China .content .title{ color: #5C5C5C;font-size: 36px;line-height:36px;font-family:"Microsoft YaHei";text-align: center;}
+.h30{height: 30px;}
+#China .content .title .title_1{font-size: 22px;line-height:50px;color: #4ABDCC;}
+#China .content .list{height:450px;}
+
+#China .content .list li{width:384px; height: 430px;float: left;margin: 0  8px;background-color: #FFF;}
+#China .content .list li a{display: block;text-decoration: none;}
+#China .content .list li a img{width:384px; height: 324px;}
+
+#China .content .list li a p{text-align: center;color:#5C5C5C ;font-size: 20px;line-height:22px;}
+#China .content .list li a p:hover{color: #4ABDCC;}
+#China .content .list .L1_1{display: block;width: 300px;margin-left: 40px;margin-top: 17px;color: #999;overflow: hidden;}
+#China .content .list li .L1_1 .img1{border-radius:48px;width: 48px;height: 48px;float: right;vertical-align: bottom;}
+#China .content .list li .L1_1 p{margin-bottom: 12px;font-size: 12px;}
+#China .content .list li .L1_1 span{margin-right: 12px;font-size: 12px;}
+
+#box2{background: #fff;padding: 0px;}
+.box{overflow: hidden;}
+#box2 .boxx{width: 1200px;height: 810px;margin: 0 auto;position: relative;background: url(../img/15.jpg) no-repeat scroll 0px -1px transparent;}
+#box2 .boxx .qq{left: 436px;top:337px;width: 136px;height: 136px;position: absolute; background: url(../img/qq1.png) no-repeat scroll 0% 0% transparent;}
+#box2 .boxx .qq:hover{background:url(../img/qq_over.png) no-repeat scroll 0px 0px transparent;}
+#box2 .boxx .tel{left: 760px;top: 375px;width: 185px;height: 180px;position:absolute;background: url(../img/tel2.png) no-repeat scroll 0% 0% transparent;}
+#box2 .boxx .tel:hover{background:url(../img/tel_over.png) no-repeat scroll 0px 0px transparent;}
+#box2 .boxx .mail{left: 245px;top: 550px;width: 192px;height: 192px;position: absolute;background: url(../img/mail3.png) no-repeat scroll 0% 0% transparent;}
+#box2 .boxx .mail:hover{background: url(../img/mail_over.png) no-repeat scroll 0px 0px transparent;}
+#box2 .boxx .weibo{left: 660px;top: 590px; width: 211px;height: 212px;position: absolute;background: url(../img/weibo4.png) no-repeat scroll 0% 0% transparent;}
+#box2 .boxx .weibo:hover{background: url(../img/mail_over.png) no-repeat scroll 0px 0px transparent;}
+/*旅途动态开始*/
+#box3 {width: 100%;background-color:#F0F0F0;}
+#box3 .status{padding-top: 50px;padding-bottom: 30px;}
+#box3 .status p{text-align: center;}
+#box3 .status .title{color: #444;font-size: 26px;font-family:"微软雅黑"}
+#box3 .status .subtitle{color: #C1C1C1;font-size: 16px; line-height: 30px;}
+#wrap{width:1017px;height:523px;margin:0px auto;position:relative;}
+#wrap .bg{width: 100%;height: 100%;background:#09f;position: absolute;}
+#wrap .bg1{opacity:1;}
+#wrap .bg2{opacity:0;}/*背景透明*/
+#wrap ul{position: absolute;}
+#wrap ul li{width: 337px;height: 173px;float: left;border: 1px solid #Ccc;}
+#wrap ul li div{color: #fff;font-family: "微暖雅黑";margin:10px;position: absolute;}
+#wrap ul li img{display:none;}/*图片隐藏*/
+#wrap ul li:hover img{display: block;}/*图片显示*/
+/*旅途动态结束*/
