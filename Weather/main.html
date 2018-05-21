@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+				<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/city.js" ></script>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title"><span id="address"></span>天气</h1>
+			<span class="mui-icon mui-icon-location-filled" onclick="getGeocode()"></span>
+			<span id="cityButton" class="mui-icon mui-icon-map mui-pull-right" ></span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<div id="first" class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<span>实时天气</span>
+						<hr>
+						<p>天气：<span id="weather"></span></p>
+						<p>温度：<span id="temperature"></span></p>
+						<p>风向：<span id="winddirection"></span></p>
+						<p>风力：<span id="windpower"></span></p>
+						<p>健康：<span id="humidity"></span></p>
+						<p>更新：<span id="reporttime"></span></p>
+					</div>
+					<img src="" width="100px" style="position: absolute;z-index: 2;top: 30%;right: 10px;"/>
+				</div>
+
+			</div>
+			<div class="mui-card">
+				<div id="second" class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<span>明天&nbsp;<a id="date"></a></span>
+						<hr>
+						<p>天气：<span id="dayweather"></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="nightweather"></span></p>
+						<p>温度：<span id="daytemp"></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="nighttemp"></span></p>
+						<p>风力：<span id="wind"></span></p>
+					</div>
+					<img src="" width="60px" style="position: absolute;z-index: 2;top: 40%;right: 10px;"/>
+				</div>
+			</div>
+
+			<div class="mui-card">
+				<div id="third" class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<span>后天&nbsp;<a id="date"></a></span>
+						<hr>
+						<p>天气：<span id="dayweather"></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="nightweather"></span></p>
+						<p>温度：<span id="daytemp"></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="nighttemp"></span></p>
+						<p>风力：<span id="wind"></span></p>
+					</div>
+					<img src="" width="60px" style="position: absolute;z-index: 2;top: 40%;right: 10px;"/>
+				</div>
+			</div>
+
+			<div class="mui-card">
+				<div id="fourth" class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="date"></a></span>
+						<hr>
+						<p>天气：<span id="dayweather"></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="nightweather"></span></p>
+						<p>温度：<span id="daytemp"></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="nighttemp"></span></p>
+						<p>风力：<span id="wind"></span></p>
+					</div>
+					<img src="" width="60px" style="position: absolute;z-index: 2;top: 40%;right: 10px;"/>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script>
+		var city;
+		// 扩展API加载完毕后调用onPlusReady回调函数
+		document.addEventListener("plusready", getGeocode, false);
+
+		// 通过定位模块获取位置信息
+		function getGeocode() {
+			plus.geolocation.getCurrentPosition(function(p) {
+				city = p.address.district;
+				
+				getWeather();
+
+			}, function(e) {
+				outSet("获取定位位置信息失败：" + e.message);
+			}, { geocode: true, provider: 'baidu' });
+		}
+
+		
+
+		function getWeather() {
+			$("#address").html(city);
+			var url1 = "http://restapi.amap.com/v3/weather/weatherInfo?city=" + city + "&key=764034524a2d38ec94ad56de350f6e12";
+			// 高德天气api
+			$.getJSON(url1, function(data) {
+				$("#first #weather").html(data.lives[0].weather);
+				$("#first #temperature").html(data.lives[0].temperature);
+				$("#first #winddirection").html(data.lives[0].winddirection);
+				$("#first #windpower").html(data.lives[0].windpower);
+				$("#first #humidity").html(data.lives[0].humidity);
+				$("#first #reporttime").html(data.lives[0].reporttime);
+				if(data.lives[0].weather.indexOf('云')>=0){
+					$("#first img").attr("src","img/yun.svg")
+				}else if(data.lives[0].weather.indexOf('晴')>=0){
+					$("#first img").attr("src","img/taiyang.svg")
+				}else if(data.lives[0].weather.indexOf('雨')>=0){
+					$("#first img").attr("src","img/yu.svg")
+				}else if(data.lives[0].weather.indexOf('雪')>=0){
+					$("#first img").attr("src","img/xue.svg")
+				}else{
+					$("#first img").attr("src","img/yintian.svg")
+				}
+				
+			});
+			var day = "<span style='font-size: 10px;'>（白天）</span>";
+			var night = "<span style='font-size: 10px;'>（晚上）</span>";
+			var url2 = "http://restapi.amap.com/v3/weather/weatherInfo?city=" + city + "&key=764034524a2d38ec94ad56de350f6e12&extensions=all";
+			$.getJSON(url2, function(data) {
+				$("#second #date").html(data.forecasts[0].casts[1].date);
+				$("#second #dayweather").html(data.forecasts[0].casts[1].dayweather + day);
+				$("#second #nightweather").html(data.forecasts[0].casts[1].nightweather + night);
+				$("#second #daytemp").html(data.forecasts[0].casts[1].daytemp + day);
+				$("#second #nighttemp").html(data.forecasts[0].casts[1].nighttemp + night);
+				$("#second #wind").html(data.forecasts[0].casts[1].daywind + "&nbsp;&nbsp;" + data.forecasts[0].casts[1].daypower);
+				
+				if(data.forecasts[0].casts[1].dayweather.indexOf('云')>=0){
+					$("#second img").attr("src","img/yun.svg")
+				}else if(data.forecasts[0].casts[1].dayweather.indexOf('晴')>=0){
+					$("#second img").attr("src","img/taiyang.svg")
+				}else if(data.forecasts[0].casts[1].dayweather.indexOf('雨')>=0){
+					$("#second img").attr("src","img/yu.svg")
+				}else if(data.forecasts[0].casts[1].dayweather.indexOf('雪')>=0){
+					$("#second img").attr("src","img/xue.svg")
+				}else{
+					$("#second img").attr("src","img/yintian.svg")
+				}
+				
+				
+				$("#third #date").html(data.forecasts[0].casts[2].date);
+				$("#third #dayweather").html(data.forecasts[0].casts[2].dayweather + day);
+				$("#third #nightweather").html(data.forecasts[0].casts[2].nightweather + night);
+				$("#third #daytemp").html(data.forecasts[0].casts[2].daytemp + day);
+				$("#third #nighttemp").html(data.forecasts[0].casts[2].nighttemp + night);
+				$("#third #wind").html(data.forecasts[0].casts[2].daywind + "&nbsp;&nbsp;" + data.forecasts[0].casts[2].daypower);
+
+				if(data.forecasts[0].casts[2].dayweather.indexOf('云')>=0){
+					$("#third img").attr("src","img/yun.svg")
+				}else if(data.forecasts[0].casts[2].dayweather.indexOf('晴')>=0){
+					$("#third img").attr("src","img/taiyang.svg")
+				}else if(data.forecasts[0].casts[2].dayweather.indexOf('雨')>=0){
+					$("#third img").attr("src","img/yu.svg")
+				}else if(data.forecasts[0].casts[2].dayweather.indexOf('雪')>=0){
+					$("#third img").attr("src","img/xue.svg")
+				}else{
+					$("#third img").attr("src","img/yintian.svg")
+				}
+				
+				
+				$("#fourth #date").html(data.forecasts[0].casts[3].date);
+				$("#fourth #dayweather").html(data.forecasts[0].casts[3].dayweather + day);
+				$("#fourth #nightweather").html(data.forecasts[0].casts[3].nightweather + night);
+				$("#fourth #daytemp").html(data.forecasts[0].casts[3].daytemp + day);
+				$("#fourth #nighttemp").html(data.forecasts[0].casts[3].nighttemp + night);
+				$("#fourth #wind").html(data.forecasts[0].casts[3].daywind + "&nbsp;&nbsp;" + data.forecasts[0].casts[3].daypower);
+			
+				if(data.forecasts[0].casts[3].dayweather.indexOf('云')>=0){
+					$("#fourth img").attr("src","img/yun.svg")
+				}else if(data.forecasts[0].casts[3].dayweather.indexOf('晴')>=0){
+					$("#fourth img").attr("src","img/taiyang.svg")
+				}else if(data.forecasts[0].casts[3].dayweather.indexOf('雨')>=0){
+					$("#fourth img").attr("src","img/yu.svg")
+				}else if(data.forecasts[0].casts[3].dayweather.indexOf('雪')>=0){
+					$("#fourth img").attr("src","img/xue.svg")
+				}else{
+					$("#fourth img").attr("src","img/yintian.svg")
+				}
+				
+			
+			});
+		}
+		
+	</script>
+	<script type="text/javascript" src="js/immersed.js"></script>
+	
+	<script src="js/mui.picker.js"></script>
+	<script src="js/mui.poppicker.js"></script>
+	<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

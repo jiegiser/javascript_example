@@ -1,0 +1,56 @@
+{
+  "index.html": {
+    "resources": [
+      "js/jquery-3.1.1.min.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/immersed.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "js/city.data-3.js",
+      "css/app.css",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.js",
+      "main.html"
+    ],
+    "refer": [
+      "chart.html"
+    ]
+  },
+  "main.html": {
+    "resources": [
+      "index.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/mui.picker.js",
+      "js/city.js",
+      "js/jquery-3.1.1.min.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.data-3.js",
+      "js/immersed.js",
+      "css/mui.css",
+      "js/mui.js",
+      "img/bg.jpg",
+      "img/yun.svg",
+      "img/taiyang.svg",
+      "img/yu.svg",
+      "img/yintian.svg"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "chart.html": {
+    "resources": [
+      "libs/echarts-all.js"
+    ],
+    "refer": []
+  }
+}
